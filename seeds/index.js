@@ -1,11 +1,11 @@
 const sequelize = require('../config/connection');
-const seedRecipe = require('./recipeData');
+const splitRecipe = require('./recipeData');
 
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await seedRecipe();
+  await splitRecipe();
 
   process.exit(0);
 };
