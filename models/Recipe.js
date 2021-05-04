@@ -5,24 +5,22 @@ class Recipe extends Model {}
 
 Recipe.init(
   {
-
-     instructions: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    instructions: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     ingredients: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     title: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     picture_link: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
-   
   },
   {
     sequelize,
