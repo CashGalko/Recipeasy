@@ -9,13 +9,24 @@ router.get('/', async (req, res) => {
       let random = Math.floor(Math.random() * 1086);
       const recipeData = await Recipe.findByPk(random);
       const randomRecipe = recipeData.get({ plain: true });
-      res.render('login', {randomRecipe});
+      res.render('login', { randomRecipe });
     }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+
+router.get('/search', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  } else {
+    res.render('search');
+  }
+});
+
 
 router.get('/new', async (req, res) => {
   try {
