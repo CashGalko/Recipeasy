@@ -30,14 +30,25 @@ router.get('/search', (req, res) => {
 
 router.get('/new', async (req, res) => {
   try {
-    if (req.session.loggedIn) {
-      res.render('userRecipes');
-    
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
     } else {
-      let random = Math.floor(Math.random() * 1086);
-      const recipeData = await Recipe.findByPk(random);
-      const randomRecipe = recipeData.get({ plain: true });
-      res.render('login', {randomRecipe});
+      res.render('userRecipes');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/saved', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    } else {
+      res.render('savedRecipes');
     }
   } catch (err) {
     console.log(err);
