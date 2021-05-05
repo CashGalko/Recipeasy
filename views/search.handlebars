@@ -1,16 +1,22 @@
 {{!-- THIS WILL BE WHERE THE USER IS DIRECTED TO SEARCH FOR RECIPES IN THE DB --}}
 
-{{#if loggedIn}}
 <div>
     <form class="form search-form">
         <div>
-            <input class="form-input" type="text" id="search"/>
+            <input class="form-input" type="text" id="search" />
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Search</button>
         </div>
     </form>
 </div>
-{{else}}
-<a href="/login"></a>
-{{/if}}
+<div>
+    <h1>List here:</h1>
+    <ul>
+        {{#each fixedRecipes as |recipe|}}
+        {{> searched-recipes}}
+        {{/each}}
+    </ul>
+</div>
+
+<script src="./js/search.js"></script>
