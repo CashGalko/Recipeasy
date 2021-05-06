@@ -85,5 +85,19 @@ router.get('/saved', async (req, res) => {
   }
 });
 
+router.get('/pdf', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    } else {
+      res.render('pdf');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
