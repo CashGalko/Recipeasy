@@ -28,6 +28,10 @@ a:visited {
   color: inherit;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 header {
   padding: 40px;
   text-align: center;

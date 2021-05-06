@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+
 router.get('/new/:query', async (req, res) => {
   try {
     console.log("Searching for: " + req.params.query);
@@ -35,25 +36,8 @@ router.get('/new/:query', async (req, res) => {
   }
 });
 
-// NEEDS WORK
-router.get('/:query', async (req, res) => {
-  try {
-    console.log("Querying for: " + req.params.query);
-    const recipeData = await Recipe.findAll({
-      where: {
-        title: {
-          [Op.substring]: `${req.params.query}`,
-        }
-      }
-    });
-    const fixedRecipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    // console.log(fixedRecipes);
-    res.render('search', {fixedRecipes});
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-////////////////////////////////////////////////////////
+
+
+
 
 module.exports = router;
