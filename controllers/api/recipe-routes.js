@@ -12,7 +12,8 @@ router.post('/', async (req, res) => {
       title: req.body.title,
 
     });
-    res.status(200).json(newRecipe);
+    console.log(newRecipe.toJSON());
+    res.status(200).json(newRecipe.toJSON());
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -27,8 +28,8 @@ router.get('/new/:query', async (req, res) => {
         title: req.params.query,
       }
     });
-    const cleanData = savedData.get({ plain: true });
-    res.status(200).json(cleanData);
+
+    res.status(200).json(savedData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
