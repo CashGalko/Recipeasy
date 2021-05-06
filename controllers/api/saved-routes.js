@@ -26,6 +26,7 @@ router.post('/new', async (req, res) => {
         user_id: req.session.userID
   
       });
+      console.log(userRecipe);
       res.status(200).json(userRecipe);
     } catch (err) {
       console.log(err);
