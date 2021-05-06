@@ -15,15 +15,32 @@ const recipeCreateHandler = async (event) => {
             body: JSON.stringify({ title, instructions, ingredients }),
             headers: { 'Content-Type': 'application/json' },
           });
-        
+        console.log(response);
         if (response.ok) {
             const success = document.querySelector('#success');
             success.setAttribute('class', ''); 
+
+            // Getting the recipe data for sending to the savedRecipe table
+            const fetchRecipe = await fetch('/api/recipe/new/' + title, {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+          });
+            console.log(fetchRecipe);
+            if (fetchRecipe) {
+              const recipeID = fetchRecipe.id
+            // Posts to the Saved Recipe table.
+            const saveRecipe = await fetch('/api/saved/new', {
+              method: 'POST',
+              body: JSON.stringify({ recipeID }),
+              headers: { 'Content-Type': 'application/json' },
+            });
+          }
         }else {
             alert('Failed to post.');
           }
     }
-}
+
+};
 
 document
   .querySelector('.recipe-form')
