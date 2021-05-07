@@ -1,19 +1,11 @@
-const { Recipe } = require('.../models');
-
 const searchDB = async (event) => {
     event.preventDefault();
 
-    const query = document.querySelector('#search').value.trim().toLowerCase();
-    const recipeData = await Recipe.findAll();
+    const query = document.querySelector('#search').value.trim();
 
-
-
-
+    window.location.href = '/search/' + query;
 }
 
-
-
-
 document
-  .querySelector('.search-form')
-  .addEventListener('submit', searchDB);
+    .querySelector('.search-form')
+    .addEventListener('submit', searchDB);

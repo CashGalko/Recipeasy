@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const bcrypt = require('bcrypt');
+const { User, SavedRecipe, Recipe } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -12,6 +13,7 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userID = dbUserData.id;
 
       res.status(200).json(dbUserData);
     });
@@ -29,7 +31,7 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
-
+    console.log(dbUserData);
     if (!dbUserData) {
       res
         .status(400)
@@ -46,13 +48,17 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+    else {
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        req.session.userID = dbUserData.id;
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
+        res
+          .status(200)
+          .json({ user: dbUserData, message: 'You are now logged in!' });
+
+      })
+    };
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -69,5 +75,46 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// Update user password
+router.put('/password', async (req, res) => {
+  try {
+    const newPass = await bcrypt.hash(req.body.password, 10);
+    const dbUserData = await User.update(
+      {
+        password: newPass,
+      },
+      {
+        where: {
+          id: req.session.userID,
+        }
+      }
+    );
+    res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+router.get('/current', async (req, res) => {
+  try {
+    console.log("Searching for all recipes for User: " + req.session.userID);
+    const savedData = await User.findOne({
+      include: [{ model: Recipe }],
+      where: {
+        id: req.session.userID,
+      }
+
+    });
+
+    res.status(200).json(savedData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
