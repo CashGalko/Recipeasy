@@ -3,21 +3,7 @@ const searchDB = async (event) => {
 
     const query = document.querySelector('#search').value.trim();
 
-    if (query) {
-        console.log(query);
-
-        const response = await fetch('/results/' + query, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        });
-        console.log(response);
-        if (response.ok) {
-            window.location.href = '/results/' + query;
-            alert('Success!');
-        } else {
-            alert('Failed to get.');
-        }
-    }
+    window.location.href = '/search/' + query;
 }
 
 document

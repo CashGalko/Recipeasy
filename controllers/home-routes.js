@@ -18,8 +18,36 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/password', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    } else {
+      res.render('password');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-router.get('/results/:query?', async (req, res) => {
+router.get('/search', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    } else {
+      res.render('search');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+router.get('/search/:query?', async (req, res) => {
   console.log("Should be seeing search page");
   if(req.params.query) {
     try {
@@ -33,26 +61,11 @@ router.get('/results/:query?', async (req, res) => {
       });
       const fixedRecipes = recipeData.map((recipe) => recipe.get({ plain: true }));
       // console.log(fixedRecipes);
-      res.render('results', {fixedRecipes});
+      res.render('search', {fixedRecipes});
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
-  }
-});
-
-
-router.get('/search', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    } else {
-      res.render('search');
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
   }
 });
 
