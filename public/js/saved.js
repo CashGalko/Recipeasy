@@ -1,47 +1,30 @@
-// WORK IN PROGRESS
-// const findSaved = async (event) => {
-//     event.preventDefault();
-//     console.log("clicked");
+// This recipe finds the current user and all of the associated Recipes through the Saved Recipe table.
+const findSaved = async () => {
+    console.log('Loading Data');
+    // Queries the API for all Recipes saved by the User currently logged in. 
+    const response = await fetch('/api/users/current', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+    // Converts the data into an array of json objects
+    const recipeData = await response.json();
+    console.log(recipeData);
 
-//     const response = await fetch('/api/recipe/', {
-//         method: 'GET',
-//         headers: { 'Content-Type': 'application/json' },
-//     });
-//     console.log(response);
-//     if (response.ok) {
-//         alert('Success!');
-//     } else {
-//         alert('Failed to obtain save data.');
-//     }
-
-// }
-
-const renderTarget = async (event) => {
-    event.preventDefault();
-    console.log("clicked");
-
-    let id = document.querySelector('#list').children().id;
-
-    if (id) {
-        const response = await fetch('/api/recipe/' + id, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        });
-        console.log(response);
-        if (response.ok) {
-            alert('Success!');
-        } else {
-            alert('Failed to obtain save data.');
-        }
+    if (response.ok) {
+        // getRecipeData(recipeData);
+    } else {
+        alert('Failed to obtain save data.');
     }
+
 }
+
 
 findSaved();
 
-document
-    .querySelectorAll('#list')
-    .addEventListener('click', renderTarget)
+// document
+//     .querySelectorAll('#list')
+//     .addEventListener('click', renderTarget)
 
-document
-    .getElementById('#remove')
-    .addEventListener('click', removeSaved);
+// document
+//     .getElementById('#remove')
+//     .addEventListener('click', removeSaved);
