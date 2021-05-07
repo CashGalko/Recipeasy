@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 router.get('/', async (req, res) => {
   try {
     if (req.session.loggedIn) {
-      res.render('mealPlanner');
+      res.render('mealPlanner', { loggedIn: req.session.loggedIn });
     } else {
       let random = Math.floor(Math.random() * 1086);
       const recipeData = await Recipe.findByPk(random);
@@ -38,7 +38,7 @@ router.get('/search', async (req, res) => {
       res.redirect('/');
       return;
     } else {
-      res.render('search');
+      res.render('search', { loggedIn: req.session.loggedIn });
     }
   } catch (err) {
     console.log(err);
@@ -76,7 +76,7 @@ router.get('/new', async (req, res) => {
       res.redirect('/');
       return;
     } else {
-      res.render('userRecipes');
+      res.render('userRecipes', { loggedIn: req.session.loggedIn });
     }
   } catch (err) {
     console.log(err);
@@ -90,7 +90,7 @@ router.get('/saved', async (req, res) => {
       res.redirect('/');
       return;
     } else {
-      res.render('savedRecipes');
+      res.render('savedRecipes', { loggedIn: req.session.loggedIn });
     }
   } catch (err) {
     console.log(err);
