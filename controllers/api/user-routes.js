@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, SavedRecipe, Recipe } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -73,5 +73,25 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
+router.get('/current', async (req, res) => {
+  try {
+    console.log("Searching for all recipes for User: " + req.session.userID);
+    const savedData = await User.findOne({
+      include: [{ model: Recipe }],
+      where: {
+       id: req.session.userID,
+      }
+      
+    });
+
+    res.status(200).json(savedData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
