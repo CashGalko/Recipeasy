@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const { User, SavedRecipe, Recipe } = require('../../models');
 
 // CREATE new user
@@ -47,16 +48,17 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    else { 
+    else {
       req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.userID = dbUserData.id;
-      
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
+        req.session.loggedIn = true;
+        req.session.userID = dbUserData.id;
 
-    })};
+        res
+          .status(200)
+          .json({ user: dbUserData, message: 'You are now logged in!' });
+
+      })
+    };
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -74,6 +76,27 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Update user password
+router.put('/password', async (req, res) => {
+  try {
+    const newPass = await bcrypt.hash(req.body.password, 10);
+    const dbUserData = await User.update(
+      {
+        password: newPass,
+      },
+      {
+        where: {
+          id: req.session.userID,
+        }
+      }
+    );
+    res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 router.get('/current', async (req, res) => {
   try {
@@ -81,9 +104,9 @@ router.get('/current', async (req, res) => {
     const savedData = await User.findOne({
       include: [{ model: Recipe }],
       where: {
-       id: req.session.userID,
+        id: req.session.userID,
       }
-      
+
     });
 
     res.status(200).json(savedData);
