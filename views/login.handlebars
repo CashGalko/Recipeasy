@@ -1,5 +1,5 @@
 <aside>
-  <div class="row justify-space-between-md">
+  <div class="user-forms">
     <div class="login-card">
       <h2 class="page-title">Login</h2>
       <form class="form login-form">
@@ -37,14 +37,16 @@
       </form>
     </div>
   </div>
+  <div class="random">
+    <div class="random-content">
+      <h1> Please enjoy this random recipe of the day!</h1>
+      {{!-- Pulls a single random recipe from the db and displays it in a card. --}}
+      <p>{{randomRecipe.title}}</p>
+      <p>{{randomRecipe.ingredients}}</p>
+      <p>{{randomRecipe.instructions}}</p>
+    </div>
+  </div>
 </aside>
 
-<div>
-  <h1> Please enjoy this random recipe of the day!</h1>
-  {{!-- Pulls a single random recipe from the db and displays it in a card. --}}
-  <p>{{randomRecipe.title}}</p>
-  <p>{{randomRecipe.ingredients}}</p>
-  <p>{{randomRecipe.instructions}}</p>
-</div>
 
 <script src="./js/login.js"></script>

@@ -1,9 +1,8 @@
 :root {
-  --primary: #3d5852;
-  --secondary: #86938f;
+  --green: #93E9BE;
   --tertiary: #5e877f;
-  --quatrinary: #6c6b67;
-  --light: #e3e4e3;
+  --salmon: #F4B18C;
+  --light: #EBEEF1;
   --dark: #182c23;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
@@ -12,11 +11,8 @@
 body {
   font-family: Arial;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color: var(--salmon);
 }
 
 a {
@@ -29,24 +25,48 @@ a:visited {
 }
 
 header {
-  padding: 40px;
-  text-align: center;
-  background: var(--primary);
+  padding: 12px;
+  text-align: left;
+  background: var(--green);
   color: var(--light);
+  display: flex;
+  justify-content: space-between;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
+header nav {
+  padding-top: 15px;
+  padding-right: 40px;
+  margin-right: 20px;
 }
+
 
 aside {
-  flex: 0;
-  background-color: var(--tertiary);
-  padding: 80px;
+  display: flex;
+  background-color: var(--salmon);
+  padding-top: 15px;
   text-align: left;
   color: var(--light);
+  align-items: flex-start;
+ 
+}
+
+.user-forms {
+  display: flex;
+  justify-content: center;
+}
+
+.random {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  background-image: url(../images/hqdefault.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.random-content {
+  max-width: 650px;
 }
 
 nav {
@@ -64,6 +84,39 @@ nav a {
 nav a:hover {
   color: var(--secondary);
   background-color: var(--dark);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 500px;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  border-width: 20px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.meal {
+  border: 1px solid green;
+  background-color: red;
+  padding: 20px 20px 0 20px;
+  border-radius: 10px;
+}
+
+.meal footer {
+  display: flex;
+  align-content: center;
+}
+
+.meal footer button {
+  flex-grow: 1;
 }
 
 .gallery {
@@ -117,14 +170,14 @@ img {
 
 .login-card {
   margin: 0 0 20px 0;
-  flex: 0 0 50%;
+  flex: 0 0 17%;
   max-width: 50%;
   padding: 5px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  background-color: #24F3EA;
   color: var(--light);
 }
 
@@ -143,6 +196,7 @@ img {
   text-align: center;
   font-weight: bold;
 }
+
 
 .gallery-name {
   text-transform: uppercase;
