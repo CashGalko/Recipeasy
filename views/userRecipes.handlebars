@@ -1,27 +1,21 @@
 {{!-- THIS WILL BE WHERE THE USER IS REDIRECTED WHEN THEY GO TO ADD A RECIPE TO THE DB --}}
 
-  <div class="login-card">
-    <h2 class="page-title">Add your recipe</h2>
-    <form class="form recipe-form">
-      <div class="form-group">
-        <label for="recipe-title">Title:</label>
-        <input class="form-input" type="text" id="recipe-title" />
-      </div>
-      <div class="form-group">
-        <label for="recipe-instructions">Instructions:</label>
-        <input class="form-input" type="text" id="recipe-instructions" />
-      </div>
-      <div class="form-group">
-        <label for="recipe-ingredients">Ingredients:</label>
-        <input class="form-input" type="text" id="recipe-ingredients" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
-    </form>
-    <div class="hide" id="success">
-        <p>Recipe successfully added!</p>
-      </div>
-  </div>
+  <section>
+        <div class="add-container">
+            <form>
+                <label for="title">Title: </label>
+                <textarea rows="2" cols="50" name="title"></textarea><br><br>
+                <label for="ingredients">Ingredients: </label>
+                <textarea rows="6" cols="50" name="ingredients" placeholder="Please use a comma to seperate ingredients"></textarea><br><br>
+                <label for="instructions">Instructions: </label>
+                <textarea rows="8" cols="50" name="instructions"></textarea>
+                <br><br>
+                <input type="submit" value="Add Recipe">
+              </form>
+        </div>
+        <div class="add-render">
+            <p>All the recipes that were added will render here.</p>
+        </div>
+    </section>
 
   <script src="./js/newRecipe.js"></script>
