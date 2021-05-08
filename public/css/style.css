@@ -90,6 +90,10 @@ nav a:hover {
   background-color: var(--dark);
 }
 
+section {
+  display: flex;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -121,6 +125,69 @@ nav a:hover {
 
 .meal footer button {
   flex-grow: 1;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: rgb(245, 6, 6);
+  max-height: 0;
+  max-width: 200px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.saved-rendered {
+  flex-grow: 1;
+  text-align: center;
+  border: 3px solid darkblue;
+}
+
+.search-rendered {
+  flex-grow: 1;
+  text-align: center;
+  border: 3px solid darkblue;
+}
+
+.search-container > p {
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+}
+
+textarea {
+  vertical-align: text-top;
+}
+
+form {
+  font-size: 20px;
 }
 
 .gallery {

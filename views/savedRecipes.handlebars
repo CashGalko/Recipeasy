@@ -1,18 +1,45 @@
 {{!-- THIS WILL BE WHERE THE USER CAN VIEW AND ORGANIZE THEIR SAVED RECIPES --}}
 {{!-- MUST INCLUDE FUNCTIONALITY TO REMOVE FROM SAVED RECIPES --}}
 
-<div>
-    <h1>Saved Recipe List</h1>
-    <ul id="list">
-        <a href>
-            <li>245: Sample Item</li>
-        </a>
-        <a href>
-            <li>1086: Sample Item 2</li>
-        </a>
-    </div>
-</div>
+<section>
+        <div class="saved-container">
+            <p>Search History</p>
+            <button class="accordion">Name of saved Recipe</button>
+            <div class="panel">
+              <p>Everything about the recipe. This all looks so good. I want all the ingredients to eat</p>
+            </div>
+            <button class="accordion">Name of saved Recipe</button>
+            <div class="panel">
+              <p>Everything about the recipe.</p>
+            </div>
+            <button class="accordion">Name of saved Recipe</button>
+            <div class="panel">
+              <p>Everything about the recipe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="saved-rendered">
+          <p>All the recipes that were saved will render here.</p>
+          <button id="saved-remove">Delete</button>
+        </div>
+      </section>
 
+      <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+  
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          });
+        }
+      </script>
  <script src="./js/saved.js"></script>
 
 {{!-- <div>

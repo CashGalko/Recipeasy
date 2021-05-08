@@ -1,15 +1,44 @@
 {{!-- THIS WILL BE WHERE THE USER IS DIRECTED TO SEARCH FOR RECIPES IN THE DB --}}
 
-<div>
-    <form class="form search-form">
+<section>
+      <div class="search-container">
+        <p>Search<input /></p>
         <div>
-            <input class="form-input" type="text" id="search" />
+          <p>Search History</p>
+          <button class="accordion">Name of searched Recipe</button>
+          <div class="panel">
+            <p>Everything about the recipe.</p>
+          </div>
+          <button class="accordion">Name of searched Recipe</button>
+          <div class="panel">
+            <p>Everything about the recipe.</p>
+          </div>
+          <button class="accordion">Name of searched Recipe</button>
+          <div class="panel">
+            <p>Everything about the recipe.</p>
+          </div>
         </div>
-        <div>
-            <button class="btn btn-primary" type="submit">Search</button>
-        </div>
-    </form>
-</div>
+      </div>
+      <div class="search-rendered">
+        <p>All the recipes that were searched will render here.</p>
+      </div>
+    </section>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
 
 <div>
     <h1>List here:</h1>
