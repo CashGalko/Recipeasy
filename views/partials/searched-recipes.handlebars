@@ -1,6 +1,7 @@
 <button class="accordion">{{ title }}</button>
 <div class="panel">
+    {{!-- Need to split the ingredients by , to make a properly ul --}}
     <ul>{{ ingredients }}</ul>
     <p>{{ instructions }}</p>
-    <button class="save-button">Save</button>
+    <button class="save-button" id="{{ id }}">Save</button>
 </div>
