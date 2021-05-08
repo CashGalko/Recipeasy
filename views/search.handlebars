@@ -2,7 +2,11 @@
 
 <section>
       <div class="search-container">
-        <p>Search<input /></p>
+        <p><form class="search-form">
+          <label for='search-form'>Search</label>
+          <input type="text" id="search">
+          <input type="submit" value="Submit">
+        </form></p>
         <div>
           <p>Search History</p>
           <button class="accordion">Name of searched Recipe</button>
@@ -20,33 +24,12 @@
         </div>
       </div>
       <div class="search-rendered">
-        <p>All the recipes that were searched will render here.</p>
-      </div>
-    </section>
-    <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          }
-        });
-      }
-    </script>
-
-<div>
-    <h1>List here:</h1>
-    <ul>
+      
         {{#each fixedRecipes as |recipe|}}
         {{> searched-recipes}}
         {{/each}}
-    </ul>
-</div>
+      
+      </div>
+</section>
 
 <script src="/js/search.js"></script>
