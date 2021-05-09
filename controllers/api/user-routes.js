@@ -52,6 +52,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.loggedIn = true;
         req.session.userID = dbUserData.id;
+        req.session.userName = dbUserData.username
 
         res
           .status(200)
@@ -79,8 +80,24 @@ router.post('/logout', (req, res) => {
 // Update user password
 router.put('/password', async (req, res) => {
   try {
+    const dbPassData = await User.findOne({
+      where: {
+        id: req.session.userID
+      },
+    });
+    console.log(dbPassData);
+    
+
+    const passValidate = await dbPassData.checkPassword(req.body.currentPass);
+
+    if (!passValidate) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect password. Please try again!' });
+      return;
+    }
     const newPass = await bcrypt.hash(req.body.password, 10);
-    const dbUserData = await User.update(
+    const passUpdate = await User.update(
       {
         password: newPass,
       },
@@ -90,7 +107,7 @@ router.put('/password', async (req, res) => {
         }
       }
     );
-    res.status(200).json(dbUserData);
+    res.status(200).json(passUpdate);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

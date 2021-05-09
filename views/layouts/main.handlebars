@@ -16,9 +16,17 @@
       {{#if loggedIn}}
       <a href="/search">Search</a>
       <a href="/new">Add Recipe</a>
-      <a href="/saved">Saved Recipes</a>
+      
       <a href="/">Meal Planner</a>
-      <a href="/" id="logout">Logout</a>
+      
+      <div class="dropdown">
+      <button class="dropbtn">Profile</button>
+         <div class="dropdown-content">
+           <a href="/saved">Saved Recipes</a>
+           <a href="/password">Change Password</a>
+           <a href="/" id="logout">Logout</a>
+          </div>
+      </div>
       
       {{/if}}
     </nav>
