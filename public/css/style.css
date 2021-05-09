@@ -284,7 +284,7 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #24F3EA;
+  background-color: #1f8a84;
   color: var(--light);
 }
 
@@ -314,6 +314,14 @@ img {
   padding-bottom: 30px;
   padding-right: 100px;
   padding-left: 100px;
+}
+
+.recipe-style {
+  color: #7e92a8;
+}
+
+#underline {
+  text-decoration: underline;
 }
 
 /* LAYOUT */

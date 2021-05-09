@@ -2,7 +2,7 @@
 
   <section>
         <div class="add-container">
-            <form>
+            <form class="recipe-form">
                 <label for="title">Title: </label>
                 <input id="title" name="title">                
                 <label for="ingredients">Ingredients: </label>
@@ -12,8 +12,9 @@
                 <input type="submit" value="Add Recipe">
               </form>
         </div>
-        <div class="add-render">
-            <div>content will go here and be constrained by the add/render div</div>
+        <div class="hide" id="success">
+            <p class="recipe-style">Your recipe has been added successfully!</p>
+            <p class="recipe-style">Thank you very much for you submission.</p>
         </div>
     </section>
 
