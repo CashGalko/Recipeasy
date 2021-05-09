@@ -5,6 +5,7 @@ var fullNodeID;
 var recipeID;
 var recipeTitle;
 
+// Opens the modal for a user to add a meal to the selected box.
 function addMeal() {
   recipeModal.classList.remove('hide');
   emptyNodeID = this.parentNode.id;
@@ -13,6 +14,7 @@ function addMeal() {
   addListeners();
 }
 
+// Choosing a meal will hide the modal and add the meal to the previously chosen box.
 function selectMeal() {
   recipeModal.classList.add('hide');
   console.log(emptyNodeID);
@@ -20,20 +22,13 @@ function selectMeal() {
   recipeTitle = this.innerHTML;
   recipeIngredients = this.value;
   console.log(recipeIngredients);
-  document.getElementById(emptyNodeID).innerHTML = `<p>${recipeTitle}</p><footer><button class='edit-button' id='clicked-btn'>Edit</button><button class='delete-button'>Delete</button></footer>`;
+  document.getElementById(emptyNodeID).innerHTML = `<p>${recipeTitle}</p><footer><button class='delete-button'>Delete</button></footer>`;
   document.getElementById(emptyNodeID).value = `${recipeIngredients}`;
 
   addListeners();
 }
 
-function editMeal() {
-  recipeModal.classList.remove('hide');
-  fullNodeID = this.parentNode.parentNode.id;
-  console.log(fullNodeID);
-  //come back to this function
-  addListeners();
-}
-
+// Removes the meal from the chosen box and replaces it with a new 'add' button.
 function deleteMeal() {
   console.log(emptyNodeID);
   emptyNodeID = this.parentNode.parentNode.id;
@@ -42,6 +37,7 @@ function deleteMeal() {
   addListeners();
 }
 
+// Creates a shopping list using all items the user has selected and then downloads them to a PDF.
 function createList() {
   const mealList = document.getElementsByClassName('meal');
   const shoppingList = document.getElementById('shopping-list');
@@ -61,6 +57,7 @@ function createList() {
   html2pdf().from(shoppingList).save();
 }
 
+// Dynamically adds event listeners to buttons as they are created and removed.
 function addListeners() {
   let editButtons = document.getElementsByClassName('edit-button');
   let deleteButtons = document.getElementsByClassName('delete-button');
