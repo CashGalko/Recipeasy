@@ -39,11 +39,11 @@
   </div>
   <div class="random">
     <div class="random-content">
-      <h1> Please enjoy this random recipe of the day!</h1>
+      <h1 class="recipe-style"> Here's a Recipe you may not have seen yet!</h1>
       {{!-- Pulls a single random recipe from the db and displays it in a card. --}}
-      <p>{{randomRecipe.title}}</p>
-      <p>{{randomRecipe.ingredients}}</p>
-      <p>{{randomRecipe.instructions}}</p>
+      <h3 class="recipe-style" id="underline">{{randomRecipe.title}}</h3>
+      <p class="recipe-style">{{randomRecipe.ingredients}}</p>
+      <p class="recipe-style">{{randomRecipe.instructions}}</p>
     </div>
   </div>
 </aside>

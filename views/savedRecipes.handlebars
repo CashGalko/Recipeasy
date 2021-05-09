@@ -4,34 +4,17 @@
 <section>
           <div class="saved-container">
             <p>Saved Recipe List</p>
-            <button class="accordion">Name of saved Recipe</button>
-            <div class="panel">
-              <p>Everything about the recipe. This all looks so good. I want all the ingredients to eat</p>
-              <button>Delete</button>
-            </div>
-            <button class="accordion">Name of saved Recipe</button>
-            <div class="panel">
-              <p>Everything about the recipe.</p>
-            </div>
-            <button class="accordion">Name of saved Recipe</button>
-            <div class="panel">
-              <p>Everything about the recipe.</p>
-            </div>
-          </div>
+        
         <div class="saved-rendered">
          
         {{#each fixedRecipeData as |recipe|}}
         {{> saved-recipes-card }}
         {{/each}}
     
-          <button id="saved-remove">Delete</button>
+        
         </div>
       </section>
 
 
  <script src="/js/saved.js"></script>
 
-{{!-- <div>
-    {{> render-single-recipe}}
-    <button class="btn btn-primary" id="remove">Remove</button>
-</div> --}}
