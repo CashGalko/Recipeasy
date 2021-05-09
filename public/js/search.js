@@ -6,18 +6,24 @@ const searchDB = async (event) => {
     window.location.href = '/search/' + query;
 }
 
-const saveCurrentRecipe = async (event) => {
-    event.preventDefault();
+function saveCurrentRecipe() {
     const recipeID = this.id
     console.log(recipeID);
-        // Saves a recipe from the search results to the user's SavedRecipes table
-    const saveRecipe = await fetch('/api/saved/new', {
+      // Saves a recipe from the search results to the user's SavedRecipes table
+    const saveRecipe = fetch('/api/saved/new', {
       method: 'POST',
       body: JSON.stringify({ recipeID }),
       headers: { 'Content-Type': 'application/json' },
     });
 }
 
+
+function addListener() {
+  let saveButtons = document.getElementsByClassName('save-button');
+  for (let i = 0; i < saveButtons.length; i++) {
+    saveButtons[i].addEventListener('click', saveCurrentRecipe);
+  }
+}
 
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -34,10 +40,8 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+addListener();
 
 document
     .querySelector('.search-form')
     .addEventListener('submit', searchDB);
-document
-    .querySelector('.save-button')
-    .addEventListener('click', saveCurrentRecipe);
