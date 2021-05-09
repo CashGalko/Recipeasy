@@ -14,21 +14,24 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-// const deleteRecipe = async (event) => {
-//     event.preventDefault();
-//     const recipeID = this.recipe.id
-//     console.log(recipeID);
-//         // Deletes a saved recipe from the user's SavedRecipe table
-//     const saveRecipe = await fetch('/api/saved/new', {
-//       method: 'DELETE',
-//       body: JSON.stringify({ recipeID }),
-//       headers: { 'Content-Type': 'application/json' },
-//     });
-// }
+function deleteCurrentRecipe() {
+  const recipeID = this.id
+  console.log('The recipe ID is ' + recipeID);
+    // Saves a recipe from the search results to the user's SavedRecipes table
+  const saveRecipe = fetch('/api/saved/new', {
+    method: 'DELETE',
+    body: JSON.stringify({ recipeID }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  location.reload();
+}
 
 
+function addListener() {
+let saveButtons = document.getElementsByClassName('save-button');
+for (let i = 0; i < saveButtons.length; i++) {
+  saveButtons[i].addEventListener('click', deleteCurrentRecipe);
+}
+}
 
-
-// document
-//     .querySelectorAll('.delete-recipe')
-//     .addEventListener('click', deleteRecipe)
+addListener();
