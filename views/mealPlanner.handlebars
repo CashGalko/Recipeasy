@@ -4,13 +4,15 @@
     <h2>
       M<span>on<span>day</span></span>
     </h2>
-    <button class="add-button">+</button>
-    <div class="meal">
-      <p>Meal you added</p>
-      <footer>
-        <button class="edit-button" id="clicked-btn">Edit</button>
-        <button class="delete-button">Delete</button>
-      </footer>
+    {{!-- <button class="add-button">+</button> --}}
+    <div class="meal" id="monday-1">
+      <button class="add-button">+</button>
+    </div>
+    <div class="meal" id="monday-2">
+      <button class="add-button">+</button>
+    </div>
+    <div class="meal" id="monday-3">
+      <button class="add-button">+</button>
     </div>
   </div>
   <div>
@@ -81,11 +83,13 @@
   </div>
 </div>
 
+<button class="btn btn-primary" id="create-list">Create List</button>
+
 {{!-- This div will be a modal that contains a list of the saved recipes. It will appear when an add or edit button is
 clicked and disappear when a recipe is selected from the list. --}}
 <div class="hide" id="recipes">
   {{#each fixedRecipeData as |recipe|}}
-  <button class="select-button">{{title}}</button>
+  <button class="select-button" id="{{id}}" value="{{ingredients}}">{{title}}</button>
   {{/each}}
 
   {{!-- TEST ITEMS
@@ -93,6 +97,10 @@ clicked and disappear when a recipe is selected from the list. --}}
   <p>Item</p>
   <p>Item</p>
   <p>Item</p> --}}
+</div>
+
+<div class="" id="shopping-list">
+
 </div>
 
 <script src="/js/meal.js"></script>
