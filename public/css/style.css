@@ -97,7 +97,7 @@ section {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 500px;
+  /* grid-template-rows: 500px; */
   grid-gap: 10px;
   background-color: #2196F3;
   padding: 10px;
@@ -108,13 +108,37 @@ section {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 20px 0;
-  font-size: 30px;
+  font-size: 20px;
+  align-self: stretch;
+}
+
+.add-container {
+  width: 400px;
+}
+
+.add-container label, .add-container input:not([type="submit"]), .add-container textarea {
+  display: block;
+  width: 90%;
+}
+
+.add-container label {
+  margin-top: 10px;
+}
+
+.add-container textarea {
+  height: 200px;
+}
+
+.add-render {
+  flex-grow: 1;
+  text-align: center;
+  border: 3px solid darkblue;
 }
 
 .meal {
   border: 1px solid green;
   background-color: red;
-  padding: 20px 20px 0 20px;
+  padding: 10px 10px 0 10px;
   border-radius: 10px;
 }
 
@@ -128,8 +152,8 @@ section {
 }
 
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: blueviolet;
+  color: whitesmoke;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -160,9 +184,12 @@ section {
   padding: 0 18px;
   background-color: rgb(245, 6, 6);
   max-height: 0;
-  max-width: 200px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.search-container{
+  max-width: 200px;
 }
 
 .saved-rendered {
@@ -290,4 +317,18 @@ img {
 
 .hide {
   display: none;
+}
+
+@media screen and (max-width:1060px) {
+  h2 span span {display: none;}
+}
+@media screen and (max-width:890px) {
+  h2 span {display: none;}
+  .grid-container {display: block;}
+  .grid-container > div {display: inline-block;}
+  header {display: block;}
+}
+
+@media screen and (max-width:495px) {
+  nav, nav a {display: block;}
 }
