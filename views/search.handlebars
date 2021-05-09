@@ -1,35 +1,25 @@
 {{!-- THIS WILL BE WHERE THE USER IS DIRECTED TO SEARCH FOR RECIPES IN THE DB --}}
 
 <section>
-      <div class="search-container">
-        <p><form class="search-form">
-          <label for='search-form'>Search</label>
-          <input type="text" id="search">
-          <input type="submit" value="Submit">
-        </form></p>
+    <div class="search-container">
+        <p>
+        <form class="search-form">
+            <label for='search-form'>Search</label>
+            <input type="text" id="search">
+            <input type="submit" value="Submit">
+        </form>
+        </p>
         <div>
-          <p>Search History</p>
-          <button class="accordion">Name of searched Recipe</button>
-          <div class="panel">
-            <p>Everything about the recipe.</p>
-          </div>
-          <button class="accordion">Name of searched Recipe</button>
-          <div class="panel">
-            <p>Everything about the recipe.</p>
-          </div>
-          <button class="accordion">Name of searched Recipe</button>
-          <div class="panel">
-            <p>Everything about the recipe.</p>
-          </div>
+            <p>Search History</p>
         </div>
-      </div>
-      <div class="search-rendered">
-      
+    </div>
+    <div class="search-rendered">
+
         {{#each fixedRecipes as |recipe|}}
         {{> searched-recipes}}
         {{/each}}
-      
-      </div>
+
+    </div>
 </section>
 
 <script src="/js/search.js"></script>

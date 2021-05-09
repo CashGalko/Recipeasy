@@ -4,17 +4,16 @@
         <div class="add-container">
             <form>
                 <label for="title">Title: </label>
-                <textarea rows="2" cols="50" name="title"></textarea><br><br>
+                <input id="title" name="title">                
                 <label for="ingredients">Ingredients: </label>
-                <textarea rows="6" cols="50" name="ingredients" placeholder="Please use a comma to seperate ingredients"></textarea><br><br>
+                <textarea id="ingredients" name="ingredients" placeholder="Please use a comma to seperate ingredients"></textarea>
                 <label for="instructions">Instructions: </label>
-                <textarea rows="8" cols="50" name="instructions"></textarea>
-                <br><br>
+                <textarea id="instructions" name="instructions"></textarea>
                 <input type="submit" value="Add Recipe">
               </form>
         </div>
         <div class="add-render">
-            <p>All the recipes that were added will render here.</p>
+            <div>content will go here and be constrained by the add/render div</div>
         </div>
     </section>
 

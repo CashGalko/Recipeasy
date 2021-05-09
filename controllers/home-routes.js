@@ -78,7 +78,7 @@ router.get('/search/:query?', async (req, res) => {
       });
       const fixedRecipes = recipeData.map((recipe) => recipe.get({ plain: true }));
       // console.log(fixedRecipes);
-      res.render('search', {fixedRecipes});
+      res.render('search', {fixedRecipes, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
