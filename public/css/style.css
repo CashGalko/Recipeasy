@@ -46,6 +46,9 @@ header nav {
 
 aside {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: var(--salmon);
   padding-top: 15px;
   text-align: left;
@@ -135,9 +138,9 @@ section {
 /* Dropdown Button */
 .dropbtn {
   background-color: var(--secondary);
-  color: var(--light);
-  padding: 16px;
-  font-size: 16px;
+  color: var(--dark);
+  padding: 14px;
+  font-size: large;
   border: none;
 }
 
@@ -167,8 +170,7 @@ section {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Show the dropdown menu on hover */
@@ -176,8 +178,7 @@ section {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  color: var(--secondary);
-  background-color: var(--dark);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .add-container label, .add-container input:not([type="submit"]), .add-container textarea {
@@ -256,19 +257,19 @@ section {
 
 .search-container{
   max-width: 200px;
-  border: 3px solid darkblue;
+  border: 3px solid var(--tertiary);
 }
 
 .saved-rendered {
   flex-grow: 1;
   text-align: center;
-  border: 3px solid darkblue;
+  border: 3px solid var(--tertiary);
 }
 
 .search-rendered {
   flex-grow: 1;
   text-align: center;
-  border: 3px solid darkblue;
+  border: 3px solid var(--tertiary);
 }
 
 .search-container > p {
@@ -375,7 +376,18 @@ img {
 }
 
 .recipe-style {
-  color: #7e92a8;
+  color: var(--dark);
+}
+
+.random-recipe {
+  margin: 0 0 20px 0;
+  padding: 5px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  border-style: double;
+  border-width: thick;
+  background-color: #1f8a84;
+  color: var(--light);
 }
 
 #underline {
