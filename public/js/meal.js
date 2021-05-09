@@ -1,5 +1,6 @@
 const recipeModal = document.getElementById('recipes');
 const listButton = document.getElementById('create-list');
+const shoppingList = document.getElementById('shopping-list');
 var emptyNodeID;
 var fullNodeID;
 var recipeID;
@@ -38,9 +39,9 @@ function deleteMeal() {
 }
 
 // Creates a shopping list using all items the user has selected and then downloads them to a PDF.
-function createList() {
+async function createList() {
   const mealList = document.getElementsByClassName('meal');
-  const shoppingList = document.getElementById('shopping-list');
+  shoppingList.classList.remove('hide');
   // Gets ingredients stored as value
   console.log(mealList[0].value);
   // Gets title of recipe
@@ -51,10 +52,14 @@ function createList() {
       let title = mealList[x].children[0].innerHTML;
       let ingredients = mealList[x].value;
 
-      shoppingList.innerHTML += `<h1>${title}<h1><br><p>${ingredients}</p>`;
+      shoppingList.innerHTML += `<h1>${title}<h1><p>Ingredients:<br>${ingredients}</p>`;
     }
   };
-  html2pdf().from(shoppingList).save();
+
+  await html2pdf().from(shoppingList).save();
+
+  shoppingList.classList.add('hide');
+  shoppingList.innerHTML = "";
 }
 
 // Dynamically adds event listeners to buttons as they are created and removed.
