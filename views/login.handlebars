@@ -38,12 +38,12 @@
     </div>
   </div>
   <div class="random">
-    <div class="random-content">
+    <div class="random-content random-recipe">
       <h1 class="recipe-style"> Here's a Recipe you may not have seen yet!</h1>
       {{!-- Pulls a single random recipe from the db and displays it in a card. --}}
-      <h3 class="recipe-style" id="underline">{{randomRecipe.title}}</h3>
-      <p class="recipe-style">{{randomRecipe.ingredients}}</p>
-      <p class="recipe-style">{{randomRecipe.instructions}}</p>
+      <h3 id="underline">{{randomRecipe.title}}</h3>
+      <p>Ingredients:<br>{{randomRecipe.ingredients}}</p>
+      <p>Instructions:<br>{{randomRecipe.instructions}}</p>
     </div>
   </div>
 </aside>
