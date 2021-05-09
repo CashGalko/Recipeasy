@@ -35,20 +35,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/password', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    } else {
-      res.render('password');
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 router.get('/search', async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -144,6 +130,20 @@ router.get('/pdf', async (req, res) => {
       return;
     } else {
       res.render('pdf');
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/password', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    } else {
+      res.render('password', { username: req.session.userName, loggedIn: req.session.loggedIn  });
     }
   } catch (err) {
     console.log(err);
