@@ -248,8 +248,9 @@ section {
 
 .panel {
   padding: 0 18px;
-  background-color: #3B9778;
+  background-color: #297d7b;
   color: whitesmoke;
+  border: 1px solid floralwhite;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -459,6 +460,12 @@ img {
   width: 100%;
   height: 50px;
   font-size: 20px;
+}
+
+.save-button {
+  background-color: #0DEB83;
+  height: 20px;
+  width: 40%;
 }
 
 @media screen and (max-width:1060px) {
