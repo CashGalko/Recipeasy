@@ -21,3 +21,4 @@ This application does not currently run any tests.
 ## Questions
 Please feel free to contact me with any questions at my email: cash.galko12@ncf.edu. You can find access to this repo or any of my other projects at my [Github](https://github.com/CashGalko).
 Please feel free to contact me with any questions at my email: keddie024@gmail.com. You can find access to this repo or any of my other projects at my [Github](https://github.com/keddie024).
+Please feel free to contact me with any questions at my email: r.jacobs790@gmail.com. You can find access to this repo or any of my other projects at my [Github](https://github.com/JakeRoberts).
